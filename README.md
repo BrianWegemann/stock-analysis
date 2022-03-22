@@ -52,7 +52,7 @@
 ![2017 Output](https://github.com/BrianWegemann/stock-analysis/blob/main/VBA_Challenge_2017.PNG)
 
 ### 2018 Output Time
-![2018 Output](https://github.com/BrianWegemann/stock-analysis/blob/main/VBA_Challenge_2018.PNG)
+![2018 Output](https://github.com/BrianWegemann/stock-analysis/blob/main/VBA_Challenge_2018_v2.PNG)
 
 ## Summary
 ### The refactored code allowed us to decrease the amount of time it took our code to run. This will be very useful for larger datasets that could take quite some time to run using the older code. A potential issue that could arise from the refactored code would be the issue of an improperly formatted dataset. Because this code is looking in specific columns and cells, a dataset with different column names or values in different cells could cause an error with this refactored code or return invalid results. 
