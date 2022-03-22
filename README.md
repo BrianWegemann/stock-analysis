@@ -13,5 +13,46 @@
 ### 2018 Stock Gains
 ![2018 Stock Gain](https://github.com/BrianWegemann/stock-analysis/blob/main/Stock_Gains_2018.PNG)
 
-### There were significant differences in time between the original code and the refactored code
+## Code and Execution
+### The refactored code greatly increased the speed at which VBA ran through each ticker and calculate totalVolume, starting price and endind price. This was done by creating a loop that pulled everything together at once instead of slowly calculating the relevant data for each individual ticker, then repeating over and over for the others. The final refactored code that decreased the run time can be seen below. 
 
+     '2a) Create a for loop to initialize the tickerVolumes to zero.
+       
+    For i = 0 To 11
+    tickerVolumes(i) = 0
+    
+    Next i
+        
+    ''2b) Loop over all the rows in the spreadsheet.
+        For i = 2 To RowCount
+
+        '3a) Increase volume for current ticker
+        tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
+        
+        
+        '3b) Check if the current row is the first row with the selected tickerIndex.
+        If Cells(i - 1, 1).Value <> tickers(tickerIndex) And Cells(i, 1).Value = tickers(tickerIndex) Then
+        tickerStartingPrices(tickerIndex) = Cells(i, 6).Value
+            
+        End If
+        
+        '3c) check if the current row is the last row with the selected ticker
+         If Cells(i + 1, 1).Value <> tickers(tickerIndex) And Cells(i, 1).Value = tickers(tickerIndex) Then
+         tickerEndingPrices(tickerIndex) = Cells(i, 6).Value
+         
+           '3d Increase the tickerIndex.
+            tickerIndex = tickerIndex + 1
+              
+               End If
+    
+    Next i
+
+### This refactored code reduced the output times significantly and will really show its value on larger datasets as our friend plans to use it for. 
+### 2017 Output Time
+![2017 Output](https://github.com/BrianWegemann/stock-analysis/blob/main/VBA_Challenge_2017.PNG)
+
+### 2018 Output Time
+![2018 Output](https://github.com/BrianWegemann/stock-analysis/blob/main/VBA_Challenge_2018.PNG)
+
+## Summary
+### The refactored code allowed us to decrease the amount of time it took our code to run. This will be very useful for larger datasets that could take quite some time to run using the older code. A potential issue that could arise from the refactored code would be the issue of an improperly formatted dataset. Because this code is looking in specific columns and cells, a dataset with different column names or values in different cells could cause an error with this refactored code or return invalid results. 
